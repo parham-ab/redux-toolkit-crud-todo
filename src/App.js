@@ -1,4 +1,4 @@
-// todo list
+// components
 import TodoList from "./features/todo/TodoList";
 
 const App = () => {

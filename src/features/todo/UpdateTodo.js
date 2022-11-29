@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DeleteTodo = () => {
+const UpdateTodo = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const DeleteTodo = () => {
     );
 };
 
-export default DeleteTodo;
+export default UpdateTodo;
