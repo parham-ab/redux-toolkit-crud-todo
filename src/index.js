@@ -4,7 +4,10 @@ import App from "./App";
 // styles
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./assets/styles/index.scss";
-
+// redux stuff
+import { Provider } from "react-redux";
+import { store } from "./app/store";
+// theme
 const theme = createTheme({
   typography: {
     fontFamily: ["Quicksand"].join(","),
@@ -19,6 +22,8 @@ const theme = createTheme({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ThemeProvider theme={theme}>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </ThemeProvider>
 );
