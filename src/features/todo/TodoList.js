@@ -35,6 +35,7 @@ const TodoList = () => {
           </div>
           <div>
             <button>done</button>
+            <input type="checkbox" value={item.done} />
             <button onClick={() => editTodo(item.id)}>Edit</button>
             <button onClick={() => deleteHandle(item.id)}>Delete</button>
           </div>
