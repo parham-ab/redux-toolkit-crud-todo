@@ -32,13 +32,13 @@ const UpdateTodo = () => {
     );
     navigate("/");
   };
-
+  console.log(newValues.done);
   return (
     <div>
       <input name="title" value={newValues.title} onChange={changeHandle} />
       <input name="content" value={newValues.content} onChange={changeHandle} />
       <input type="checkbox" value={newValues.done} />
-
+      <span>{newValues.done ? "true" : "false"}</span>
       <button onClick={updateTodoHandle}>Update</button>
       <button onClick={() => navigate("/")}>Cancel</button>
     </div>

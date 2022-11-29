@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTodo } from "./todoSlice";
+import { deleteTodo, doneSwitch } from "./todoSlice";
 // components
 import AddTodo from "./AddTodo";
 
@@ -15,6 +15,10 @@ const TodoList = () => {
   const navigate = useNavigate();
   const editTodo = (id) => {
     navigate(`/${id}`);
+  };
+  // done switch
+  const doneSwitchHandle = (id) => {
+    dispatch(doneSwitch({ id }));
   };
 
   return (
@@ -34,7 +38,7 @@ const TodoList = () => {
             <small>{item.timeCreated}</small>
           </div>
           <div>
-            <button>done</button>
+            <button onClick={() => doneSwitchHandle(item.id)}>done</button>
             <input type="checkbox" value={item.done} />
             <button onClick={() => editTodo(item.id)}>Edit</button>
             <button onClick={() => deleteHandle(item.id)}>Delete</button>
