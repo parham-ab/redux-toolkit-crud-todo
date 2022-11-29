@@ -23,7 +23,16 @@ const todoSlice = createSlice({
         (item) => item.id !== action.payload.id
       );
     },
-    editTodo: {},
+    editTodo: (state, action) => {
+      const { id, title, content, timeCreated, done } = action.payload;
+      const currentTodo = state.todoList.find((item) => item.id === id);
+      if (currentTodo) {
+        currentTodo.title = title;
+        currentTodo.content = content;
+        currentTodo.timeCreated = timeCreated;
+        currentTodo.done = done;
+      }
+    },
   },
 });
 

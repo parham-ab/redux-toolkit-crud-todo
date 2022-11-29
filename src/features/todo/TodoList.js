@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTodo } from "./todoSlice";
 // components
@@ -9,6 +10,11 @@ const TodoList = () => {
   // delete todo
   const deleteHandle = (id) => {
     dispatch(deleteTodo({ id }));
+  };
+  // edit todo
+  const navigate = useNavigate();
+  const editTodo = (id) => {
+    navigate(`/${id}`);
   };
 
   return (
@@ -29,7 +35,7 @@ const TodoList = () => {
           </div>
           <div>
             <button>done</button>
-            <button>Edit</button>
+            <button onClick={() => editTodo(item.id)}>Edit</button>
             <button onClick={() => deleteHandle(item.id)}>Delete</button>
           </div>
         </div>
