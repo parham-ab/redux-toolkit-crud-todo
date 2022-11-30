@@ -16,7 +16,11 @@ const UpdateTodo = () => {
   });
   // on change
   const changeHandle = (e) => {
-    setNewValues({ ...newValues, [e.target.name]: e.target.value });
+    if (e.target.name === "isCompleted") {
+      setNewValues({ ...newValues, [e.target.name]: e.target.checked });
+    } else {
+      setNewValues({ ...newValues, [e.target.name]: e.target.value });
+    }
   };
   const dispatch = useDispatch();
   // add todo
@@ -32,13 +36,28 @@ const UpdateTodo = () => {
     );
     navigate("/");
   };
-  console.log(newValues.done);
+
   return (
     <div>
-      <input name="title" value={newValues.title} onChange={changeHandle} />
-      <input name="content" value={newValues.content} onChange={changeHandle} />
-      <input type="checkbox" value={newValues.done} />
-      <span>{newValues.done ? "true" : "false"}</span>
+      <input
+        type="text"
+        name="title"
+        value={newValues.title}
+        onChange={changeHandle}
+      />
+      <input
+        type="text"
+        name="content"
+        value={newValues.content}
+        onChange={changeHandle}
+      />
+      <input
+        type="checkbox"
+        name="isCompleted"
+        value={newValues.done}
+        checked={newValues.done}
+        onChange={changeHandle}
+      />
       <button onClick={updateTodoHandle}>Update</button>
       <button onClick={() => navigate("/")}>Cancel</button>
     </div>

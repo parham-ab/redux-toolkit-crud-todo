@@ -16,6 +16,7 @@ const AddTodo = () => {
   const dispatch = useDispatch();
   // add todo
   const addTodoHandle = () => {
+    setInputVal({ title: "", content: "" });
     dispatch(
       addTodo(
         inputVal.title,
