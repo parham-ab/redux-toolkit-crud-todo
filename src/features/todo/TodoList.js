@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteTodo, doneSwitch } from "./todoSlice";
 // components
 import AddTodo from "./AddTodo";
+// mui
+import { Box } from "@mui/system";
+import { Grid } from "@mui/material";
 
 const TodoList = () => {
   const { todoList } = useSelector((state) => state);
@@ -22,16 +25,18 @@ const TodoList = () => {
   };
 
   return (
-    <div>
-      <AddTodo />
+    <Grid container justifyContent="space-between" alignItems="center">
+      <Grid item>
+        <AddTodo />
+      </Grid>
       {todoList.map((item) => (
-        <div key={item.id}>
-          <div>
-            <h4>Title:</h4>
+        <Grid item key={item.id}>
+          <Box display="flex" flexDirection="column">
+            <p>Title:</p>
             <h5>{item.title}</h5>
-          </div>
+          </Box>
           <div>
-            <h4>Content:</h4>
+            <p>Content:</p>
             <h5>{item.content}</h5>
           </div>
           <div>
@@ -43,9 +48,9 @@ const TodoList = () => {
             <button onClick={() => editTodo(item.id)}>Edit</button>
             <button onClick={() => deleteHandle(item.id)}>Delete</button>
           </div>
-        </div>
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 };
 

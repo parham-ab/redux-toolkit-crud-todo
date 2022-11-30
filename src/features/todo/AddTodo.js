@@ -1,10 +1,13 @@
 import { useDispatch } from "react-redux";
 // redux actions
 import { addTodo } from "./todoSlice";
+// mui
+import { Box } from "@mui/system";
 // formik stuff
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import CustomInput from "../../components/common/CustomInput";
+import { Button } from "@mui/material";
 const validationSchema = Yup.object({
   title: Yup.string().required("Required!"),
   content: Yup.string().required("Required!"),
@@ -39,15 +42,42 @@ const AddTodo = () => {
   });
 
   return (
-    <div>
+    <Box
+      sx={{
+        background: "#cad1ff",
+        width: "fit-content",
+        padding: "10px",
+        borderRadius: "8px",
+        boxShadow: 5,
+      }}
+    >
       <form onSubmit={formik.handleSubmit}>
-        <CustomInput name="title" label="title" formik={formik} />
-        <CustomInput name="content" label="content" formik={formik} />
-        <button type="submit" disabled={!formik.isValid}>
+        <Box my={3}>
+          <CustomInput
+            name="title"
+            label="Title"
+            formik={formik}
+            placeholder="Task Title..."
+          />
+        </Box>
+        <Box my={3}>
+          <CustomInput
+            name="content"
+            label="Content"
+            formik={formik}
+            placeholder="Description..."
+          />
+        </Box>
+        <Button
+          size="small"
+          variant="outlined"
+          type="submit"
+          disabled={!formik.isValid}
+        >
           Submit
-        </button>
+        </Button>
       </form>
-    </div>
+    </Box>
   );
 };
 

@@ -1,0 +1,16 @@
+.customInput {
+  background: #ebebeb;
+  border: none;
+  border-radius: 10px;
+  padding: 7px;
+  margin: 5px 0;
+  font-size: 16px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  &::placeholder {
+    color: rgb(155, 155, 155);
+  }
+}
+.error {
+  outline: 1px solid rgb(219 6 6);
+  outline-offset: -1px;
+}
