@@ -25,6 +25,10 @@
   box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }
 .todo-items {
-  box-shadow: -6px 3px 0px 1px rgb(78 14 153), 0px 0px 0px 0px rgb(0 0 0 / 14%),
+  box-shadow: -6px 3px 0px 1px #f6d791, 0px 0px 0px 0px rgb(0 0 0 / 14%),
     0px 0px 0px 0px rgb(0 0 0 / 12%);
+}
+.done {
+  text-decoration: line-through rgb(255, 78, 78);
+  transition: all 0.5s;
 }

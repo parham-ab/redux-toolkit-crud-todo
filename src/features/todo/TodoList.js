@@ -7,7 +7,7 @@ import TodoImg from "../../assets/img/todo-img.svg";
 import AddTodo from "./AddTodo";
 // MUI
 import { Box } from "@mui/system";
-import { Grid, Container, IconButton, Divider } from "@mui/material";
+import { Grid, Container, IconButton, Divider, Checkbox } from "@mui/material";
 // icons
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import EditIcon from "@mui/icons-material/Edit";
@@ -36,6 +36,9 @@ const TodoList = () => {
         display="flex"
         justifyContent="space-between"
         alignItems="center"
+        sx={{
+          minHeight: "90vh",
+        }}
       >
         <Grid item>
           <AddTodo />
@@ -53,7 +56,7 @@ const TodoList = () => {
                     p: 2,
                     borderRadius: "10px",
                   }}
-                  className="todo-items"
+                  className={item.done ? "done todo-items" : "todo-items"}
                   key={item.id}
                 >
                   <Grid item>
@@ -86,10 +89,17 @@ const TodoList = () => {
                       >
                         <EditIcon />
                       </IconButton>
-                      <input type="checkbox" value={item.done} />
-                      <button onClick={() => doneSwitchHandle(item.id)}>
-                        done
-                      </button>
+
+                      <Checkbox
+                        checked={item.done}
+                        onClick={() => doneSwitchHandle(item.id)}
+                        size="small"
+                        sx={{
+                          "& .MuiSvgIcon-root": {
+                            color: "#20b63f",
+                          },
+                        }}
+                      />
                     </Box>
                   </Grid>
                 </Box>
