@@ -1,7 +1,12 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
+const items =
+  localStorage.getItem("todo-items-redux") != null
+    ? JSON.parse(localStorage.getItem("todo-items-redux"))
+    : [];
+
 const initialState = {
-  todoList: [],
+  todoList: items,
 };
 
 const todoSlice = createSlice({
@@ -11,6 +16,10 @@ const todoSlice = createSlice({
     addTodo: {
       reducer: (state, action) => {
         state.todoList.push(action.payload);
+        localStorage.setItem(
+          "todo-items-redux",
+          JSON.stringify(state.todoList)
+        );
       },
       prepare: (title, content, done) => {
         let options = {

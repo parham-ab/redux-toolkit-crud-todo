@@ -28,6 +28,7 @@ const AddTodo = () => {
     dispatch(
       addTodo(values.title, values.content, values.timeCreated, values.done)
     );
+
     // clear inputs after submitting
     values.title = "";
     values.content = "";
