@@ -27,6 +27,7 @@
 .todo-items {
   box-shadow: -6px 3px 0px 1px #f6d791, 0px 0px 0px 0px rgb(0 0 0 / 14%),
     0px 0px 0px 0px rgb(0 0 0 / 12%);
+  word-break: break-all;
 }
 .done {
   text-decoration: line-through rgb(255, 78, 78);

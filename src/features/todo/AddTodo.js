@@ -3,19 +3,20 @@ import { useDispatch } from "react-redux";
 import { addTodo } from "./todoSlice";
 // mui
 import { Box } from "@mui/system";
+import { Button } from "@mui/material";
 // formik stuff
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import CustomInput from "../../components/common/CustomInput";
-import { Button } from "@mui/material";
 const validationSchema = Yup.object({
   title: Yup.string().required("Required!"),
   content: Yup.string().required("Required!"),
 });
+
 const initialValues = {
   title: "",
   content: "",
-  timeCreated: new Date().getTime(),
+  timeCreated: "",
   done: false,
 };
 
@@ -30,7 +31,6 @@ const AddTodo = () => {
     // clear inputs after submitting
     values.title = "";
     values.content = "";
-    values.timeCreated = new Date().getTime();
     values.done = false;
   };
   const formik = useFormik({

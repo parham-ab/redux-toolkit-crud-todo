@@ -12,9 +12,25 @@ const todoSlice = createSlice({
       reducer: (state, action) => {
         state.todoList.push(action.payload);
       },
-      prepare: (title, content, timeCreated, done) => {
+      prepare: (title, content, done) => {
+        let options = {
+          hour12: false,
+          hourCycle: "h23",
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        };
+
         return {
-          payload: { id: nanoid(), title, content, timeCreated, done },
+          payload: {
+            id: nanoid(),
+            title,
+            content,
+            timeCreated: new Date().toLocaleString("en-US", options),
+            done,
+          },
         };
       },
     },
