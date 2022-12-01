@@ -14,3 +14,17 @@
   outline: 1px solid rgb(219 6 6);
   outline-offset: -1px;
 }
+.todo-empty {
+  background-color: rgb(255 246 167);
+  padding: 10px;
+  border-radius: 15px;
+  width: 300px;
+  overflow: auto;
+  height: fit-content;
+  max-height: 550px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+.todo-items {
+  box-shadow: -6px 3px 0px 1px rgb(78 14 153), 0px 0px 0px 0px rgb(0 0 0 / 14%),
+    0px 0px 0px 0px rgb(0 0 0 / 12%);
+}

@@ -7,7 +7,10 @@ import TodoImg from "../../assets/img/todo-img.svg";
 import AddTodo from "./AddTodo";
 // MUI
 import { Box } from "@mui/system";
-import { Grid, Container } from "@mui/material";
+import { Grid, Container, IconButton, Divider } from "@mui/material";
+// icons
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import EditIcon from "@mui/icons-material/Edit";
 
 const TodoList = () => {
   const { todoList } = useSelector((state) => state);
@@ -39,13 +42,21 @@ const TodoList = () => {
         </Grid>
 
         <div>
-          <Box sx={{ background: "green" }}>
+          <Box className={todoList.length ? "todo-empty" : undefined}>
             {todoList.length ? (
               todoList.map((item) => (
                 <Box
-                  sx={{ background: "red", m: 1, p: 2, borderRadius: "10px" }}
+                  sx={{
+                    background: "#fff5c3",
+                    my: 2,
+                    mx: 1,
+                    p: 2,
+                    borderRadius: "10px",
+                  }}
+                  className="todo-items"
+                  key={item.id}
                 >
-                  <Grid item key={item.id}>
+                  <Grid item>
                     <Box>
                       <p>Title:</p>
                       <h5>{item.title}</h5>
@@ -57,14 +68,27 @@ const TodoList = () => {
                     <Box>
                       <small>{item.timeCreated}</small>
                     </Box>
+                    <Divider sx={{ my: 1 }} />
                     <Box>
+                      <IconButton
+                        aria-label="delete"
+                        onClick={() => deleteHandle(item.id)}
+                        size="small"
+                        color="error"
+                      >
+                        <HighlightOffIcon />
+                      </IconButton>
+                      <IconButton
+                        aria-label="edit"
+                        onClick={() => editTodo(item.id)}
+                        size="small"
+                        color="warning"
+                      >
+                        <EditIcon />
+                      </IconButton>
+                      <input type="checkbox" value={item.done} />
                       <button onClick={() => doneSwitchHandle(item.id)}>
                         done
-                      </button>
-                      <input type="checkbox" value={item.done} />
-                      <button onClick={() => editTodo(item.id)}>Edit</button>
-                      <button onClick={() => deleteHandle(item.id)}>
-                        Delete
                       </button>
                     </Box>
                   </Grid>

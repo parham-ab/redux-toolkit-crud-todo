@@ -4,7 +4,6 @@
 *::after {
   margin: 0;
   padding: 0;
-  // border: none;
   outline: none;
   box-sizing: border-box;
   text-decoration: none;
@@ -17,13 +16,14 @@ ul {
   list-style: none;
 }
 body {
-  font-family: "Quicksand", sans-serif;
-  font-family: "Rubik", sans-serif;
+  font-family: "Comfortaa", cursive;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 // scroll bar
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 4px;
+  height: 4px;
 }
 ::-webkit-scrollbar-track {
   background-color: transparent;
@@ -40,3 +40,4 @@ body {
 }
 // styles
 @import "todoList";
+@import "fonts";

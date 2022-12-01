@@ -12,7 +12,7 @@ import { store } from "./app/store";
 // theme
 const theme = createTheme({
   typography: {
-    fontFamily: ["Quicksand"].join(","),
+    fontFamily: ["Comfortaa", "M PLUS Rounded 1c", "Nunito"].join(","),
     fontSize: 15,
     fontWeightLight: 400,
     fontWeightMedium: 500,
