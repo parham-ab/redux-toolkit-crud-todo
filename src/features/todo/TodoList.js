@@ -41,86 +41,88 @@ const TodoList = () => {
       <Grid
         container
         display="flex"
-        justifyContent="space-between"
         alignItems="center"
         sx={{
           minHeight: "90vh",
+          justifyContent: { sm: "space-between", xs: "center" },
         }}
       >
-        <Grid item>
+        <Grid
+          item
+          xs={12}
+          sm={5}
+          mt={5}
+          sx={{ display: "flex", justifyContent:  "center"  }}
+        >
           <AddTodo />
         </Grid>
 
-        <div>
-          <Box className={todoList.length ? "todo-empty" : undefined}>
-            {todoList.length ? (
-              todoList.map((item) => (
-                <Box
-                  sx={{
-                    background: "#fff5c3",
-                    my: 2,
-                    mx: 1,
-                    p: 2,
-                    borderRadius: "10px",
-                  }}
-                  className={item.done ? "done todo-items" : "todo-items"}
-                  key={item.id}
-                >
-                  <Grid item>
-                    <Box>
-                      <Typography sx={{ color: "#300198" }}>Title:</Typography>
-                      <h5>{item.title}</h5>
-                    </Box>
-                    <Box>
-                      <Typography sx={{ color: "#300198" }}>
-                        Content:
-                      </Typography>
-                      <h5>{item.content}</h5>
-                    </Box>
-                    <Box>
-                      <small>{item.timeCreated}</small>
-                    </Box>
-                    <Divider sx={{ my: 1 }} />
-                    <Box>
-                      <IconButton
-                        aria-label="delete"
-                        onClick={() => deleteHandle(item.id)}
-                        size="small"
-                        color="error"
-                      >
-                        <HighlightOffIcon />
-                      </IconButton>
-                      <IconButton
-                        aria-label="edit"
-                        onClick={() => editTodo(item.id)}
-                        size="small"
-                        color="warning"
-                      >
-                        <EditIcon />
-                      </IconButton>
+        <Box className={todoList.length ? "todo-empty" : undefined} mt={5}>
+          {todoList.length ? (
+            todoList.map((item) => (
+              <Box
+                sx={{
+                  background: "#fff5c3",
+                  my: 2,
+                  mx: 1,
+                  p: 2,
+                  borderRadius: "10px",
+                }}
+                className={item.done ? "done todo-items" : "todo-items"}
+                key={item.id}
+              >
+                <Grid item xs={12} sm={7}>
+                  <Box>
+                    <Typography sx={{ color: "#300198" }}>Title:</Typography>
+                    <h5>{item.title}</h5>
+                  </Box>
+                  <Box>
+                    <Typography sx={{ color: "#300198" }}>Content:</Typography>
+                    <h5>{item.content}</h5>
+                  </Box>
+                  <Box>
+                    <small>{item.timeCreated}</small>
+                  </Box>
+                  <Divider sx={{ my: 1 }} />
+                  <Box>
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => deleteHandle(item.id)}
+                      size="small"
+                      color="error"
+                    >
+                      <HighlightOffIcon />
+                    </IconButton>
+                    <IconButton
+                      aria-label="edit"
+                      onClick={() => editTodo(item.id)}
+                      size="small"
+                      color="warning"
+                    >
+                      <EditIcon />
+                    </IconButton>
 
-                      <Checkbox
-                        value={item.done}
-                        checked={!!item.done}
-                        onClick={() => doneSwitchHandle(item.id)}
-                        size="small"
-                        sx={{
-                          "& .MuiSvgIcon-root": {
-                            color: "#20b63f",
-                          },
-                        }}
-                      />
-                    </Box>
-                  </Grid>
-                </Box>
-              ))
-            ) : (
-              <Box>
-                <img src={TodoImg} alt="empty" width={300} />
+                    <Checkbox
+                      value={item.done}
+                      checked={!!item.done}
+                      onClick={() => doneSwitchHandle(item.id)}
+                      size="small"
+                      sx={{
+                        "& .MuiSvgIcon-root": {
+                          color: "#20b63f",
+                        },
+                      }}
+                    />
+                  </Box>
+                </Grid>
               </Box>
-            )}
-          </Box>
-        </div>
+            ))
+          ) : (
+            <Box>
+              <img src={TodoImg} alt="empty" width={300} />
+            </Box>
+          )}
+        </Box>
       </Grid>
     </Container>
   );
