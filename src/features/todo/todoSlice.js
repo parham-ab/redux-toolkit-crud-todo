@@ -31,7 +31,6 @@ const todoSlice = createSlice({
           hour: "2-digit",
           minute: "2-digit",
         };
-
         return {
           payload: {
             id: nanoid(),
@@ -47,12 +46,14 @@ const todoSlice = createSlice({
       state.todoList = state.todoList.filter(
         (item) => item.id !== action.payload.id
       );
+      localStorage.setItem("todo-items-redux", JSON.stringify(state.todoList));
     },
     doneSwitch: (state, action) => {
       const currentTodo = state.todoList.find(
         (item) => item.id === action.payload.id
       );
       currentTodo.done = !currentTodo.done;
+      localStorage.setItem("todo-items-redux", JSON.stringify(state.todoList));
     },
     editTodo: (state, action) => {
       const { id, title, content, done } = action.payload;
@@ -62,6 +63,7 @@ const todoSlice = createSlice({
         currentTodo.content = content;
         currentTodo.done = done;
       }
+      localStorage.setItem("todo-items-redux", JSON.stringify(state.todoList));
     },
   },
 });
