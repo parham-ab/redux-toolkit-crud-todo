@@ -2,6 +2,12 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editTodo } from "./todoSlice";
+import { Box, IconButton, Typography } from "@mui/material";
+// icons
+import CancelIcon from "@mui/icons-material/Cancel";
+import CheckIcon from "@mui/icons-material/Check";
+import { Stack } from "@mui/system";
+import EditIcon from "@mui/icons-material/Edit";
 
 const UpdateTodo = () => {
   const { id } = useParams();
@@ -38,29 +44,65 @@ const UpdateTodo = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        name="title"
-        value={newValues.title}
-        onChange={changeHandle}
-      />
-      <input
-        type="text"
-        name="content"
-        value={newValues.content}
-        onChange={changeHandle}
-      />
-      <input
-        type="checkbox"
-        name="isCompleted"
-        value={newValues.done}
-        checked={newValues.done}
-        onChange={changeHandle}
-      />
-      <button onClick={updateTodoHandle}>Update</button>
-      <button onClick={() => navigate("/")}>Cancel</button>
-    </div>
+    <Box
+      sx={{
+        background: "#cad1ff",
+        width: "300px",
+        padding: "10px",
+        borderRadius: "8px",
+        boxShadow: 5,
+        m: "50px auto",
+      }}
+    >
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mb={5}
+      >
+        <Typography component="h1" variant="h6">
+          Edit Todo
+        </Typography>
+
+        <Typography component="h1" variant="h6" color="text.secondary">
+          <EditIcon />
+        </Typography>
+      </Box>
+      <Stack>
+        <input
+          className="customInput"
+          type="text"
+          name="title"
+          value={newValues.title}
+          onChange={changeHandle}
+        />
+        <input
+          className="customInput"
+          type="text"
+          name="content"
+          value={newValues.content}
+          onChange={changeHandle}
+        />
+      </Stack>
+      <Box display="flex" justifyContent="space-between">
+        <IconButton
+          onClick={() => navigate("/")}
+          variant="text"
+          color="error"
+          size="small"
+        >
+          <CancelIcon />
+        </IconButton>
+        <IconButton
+          onClick={updateTodoHandle}
+          variant="contained"
+          color="success"
+          size="small"
+        >
+          <CheckIcon />
+        </IconButton>
+      </Box>
+    </Box>
   );
 };
 
